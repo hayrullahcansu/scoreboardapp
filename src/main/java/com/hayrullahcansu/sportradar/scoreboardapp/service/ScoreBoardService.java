@@ -1,14 +1,9 @@
 package com.hayrullahcansu.sportradar.scoreboardapp.service;
 
-import com.hayrullahcansu.sportradar.scoreboardapp.data.AddingGameResult;
-import com.hayrullahcansu.sportradar.scoreboardapp.data.FinishGameResult;
-import com.hayrullahcansu.sportradar.scoreboardapp.data.Match;
-import com.hayrullahcansu.sportradar.scoreboardapp.data.UpdateGameResult;
+import com.hayrullahcansu.sportradar.scoreboardapp.data.*;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 
@@ -16,11 +11,11 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ScoreBoardService {
     List<Match> matches = new LinkedList<>(
             Arrays.asList(
-                    new Match("Mexico", "Canada", 0, 5),
-                    new Match("Spain", "Brazil", 10, 2),
-                    new Match("Germany", "France", 2, 2),
                     new Match("Uruguay", "Italy", 6, 6),
-                    new Match("Argentina", "Australia", 3, 1)
+                    new Match("Spain", "Brazil", 10, 2),
+                    new Match("Mexico", "Canada", 0, 5),
+                    new Match("Argentina", "Australia", 3, 1),
+                    new Match("Germany", "France", 2, 2)
             )
     );
     ReentrantLock lock = new ReentrantLock();
@@ -82,6 +77,25 @@ public class ScoreBoardService {
             match.get().setHomeTeamScore(homeTeamScore);
             match.get().setAwayTeamScore(awayTeamScore);
             result.setMatch(match.get());
+        } finally {
+            lock.unlock();
+        }
+        return result;
+    }
+
+    public SummaryResult GetSummaryResult() {
+        SummaryResult result = new SummaryResult();
+        StringBuilder sb = new StringBuilder();
+        lock.lock();
+        try {
+            int index = 1;
+            matches.stream().sorted(Comparator.comparingInt(x -> x.getEventStartDateTime().getNano()));
+            for (Match m :
+                    matches) {
+                sb.append(String.format("%d. %s %d - %s %d\n", index, m.getHomeTeam(), m.getHomeTeamScore(), m.getAwayTeam(), m.getAwayTeamScore()));
+                index++;
+            }
+            result.setSummary(sb.toString());
         } finally {
             lock.unlock();
         }
