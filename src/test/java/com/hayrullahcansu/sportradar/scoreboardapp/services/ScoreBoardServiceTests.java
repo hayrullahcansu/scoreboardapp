@@ -101,4 +101,18 @@ class ScoreBoardServiceTests {
         assertThat(result).hasFieldOrPropertyWithValue("oldAwayTeamScore", oldAwayTeamScore);
     }
 
+    @Test
+    void Update_A_Game_Return_Fail_If_The_Match_Not_Exists() {
+        String homeTeam = "Turkey";
+        String awayTeam = "France";
+        Integer homeTeamScore = 3;
+        Integer awayTeamScore = 2;
+
+        UpdateGameResult result = scoreBoardService.UpdateAGame(homeTeam, awayTeam, homeTeamScore, awayTeamScore);
+
+        assertNotNull(result);
+        assertEquals(false, result.getResult());
+        assertNull(result.getMatch());
+    }
+
 }
