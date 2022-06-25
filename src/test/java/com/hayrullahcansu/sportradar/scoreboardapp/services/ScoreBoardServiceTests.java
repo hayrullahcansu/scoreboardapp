@@ -18,7 +18,7 @@ class ScoreBoardServiceTests {
     ScoreBoardService scoreBoardService;
 
     @Test
-    void StartAGameWithCustomHomeTeamAwayTeam() {
+    void Start_A_Game_With_Custom_HomeTeam_AwayTeam() {
         String homeTeam = "Real Madrid";
         String awayTeam = "Barcelona";
 
@@ -29,6 +29,17 @@ class ScoreBoardServiceTests {
         assertNotNull(result.getMatch());
         assertThat(result.getMatch()).hasFieldOrPropertyWithValue("homeTeam", homeTeam);
         assertThat(result.getMatch()).hasFieldOrPropertyWithValue("awayTeam", awayTeam);
+    }
+
+    @Test
+    void Start_A_Game_Return_Fail_If_The_Match_Already_Exists() {
+        String homeTeam = "Uruguay";
+        String awayTeam = "Italy";
+
+        AddingScoreResult result = scoreBoardService.StartAGame(homeTeam, awayTeam);
+
+        assertNotNull(result);
+        assertEquals(false, result.getResult());
     }
 
 }
