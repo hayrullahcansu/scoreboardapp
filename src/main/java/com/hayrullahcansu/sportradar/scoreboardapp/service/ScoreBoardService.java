@@ -3,6 +3,7 @@ package com.hayrullahcansu.sportradar.scoreboardapp.service;
 import com.hayrullahcansu.sportradar.scoreboardapp.data.AddingGameResult;
 import com.hayrullahcansu.sportradar.scoreboardapp.data.FinishGameResult;
 import com.hayrullahcansu.sportradar.scoreboardapp.data.Match;
+import com.hayrullahcansu.sportradar.scoreboardapp.data.UpdateGameResult;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -57,6 +58,25 @@ public class ScoreBoardService {
             }
             matches.remove(match.get());
             result.setResult(true);
+            result.setMatch(match.get());
+        } finally {
+            lock.unlock();
+        }
+        return result;
+    }
+
+    public UpdateGameResult UpdateAGame(String homeTeam, String awayTeam, Integer homeTeamScore, Integer awayTeamScore) {
+        lock.lock();
+        UpdateGameResult result = new UpdateGameResult();
+        try {
+            var match = matches.stream()
+                    .filter(p -> p.getHomeTeam() == homeTeam && p.getAwayTeam() == awayTeam)
+                    .findFirst();
+            result.setResult(true);
+            result.setOldHomeTeamScore(match.get().getHomeTeamScore());
+            result.setOldAwayTeamScore(match.get().getAwayTeamScore());
+            match.get().setHomeTeamScore(homeTeamScore);
+            match.get().setAwayTeamScore(awayTeamScore);
             result.setMatch(match.get());
         } finally {
             lock.unlock();

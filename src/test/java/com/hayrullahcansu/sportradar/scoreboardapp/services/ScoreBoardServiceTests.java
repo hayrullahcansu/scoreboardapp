@@ -2,6 +2,7 @@ package com.hayrullahcansu.sportradar.scoreboardapp.services;
 
 import com.hayrullahcansu.sportradar.scoreboardapp.data.AddingGameResult;
 import com.hayrullahcansu.sportradar.scoreboardapp.data.FinishGameResult;
+import com.hayrullahcansu.sportradar.scoreboardapp.data.UpdateGameResult;
 import com.hayrullahcansu.sportradar.scoreboardapp.service.ScoreBoardService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -96,8 +97,8 @@ class ScoreBoardServiceTests {
         assertThat(result.getMatch()).hasFieldOrPropertyWithValue("awayTeam", awayTeam);
         assertThat(result.getMatch()).hasFieldOrPropertyWithValue("homeTeamScore", homeTeamScore);
         assertThat(result.getMatch()).hasFieldOrPropertyWithValue("awayTeamScore", awayTeamScore);
-        assertThat(result).hasFieldOrPropertyWithValue("oldAwayTeamScore", oldHomeTeamScore);
-        assertThat(result).hasFieldOrPropertyWithValue("oldHomeTeamScore", oldAwayTeamScore);
+        assertThat(result).hasFieldOrPropertyWithValue("oldHomeTeamScore", oldHomeTeamScore);
+        assertThat(result).hasFieldOrPropertyWithValue("oldAwayTeamScore", oldAwayTeamScore);
     }
 
 }

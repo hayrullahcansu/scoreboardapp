@@ -45,4 +45,12 @@ public class Match {
     public LocalDateTime getEventStartDateTime() {
         return eventStartDateTime;
     }
+
+    public void setHomeTeamScore(Integer homeTeamScore) {
+        this.homeTeamScore = homeTeamScore;
+    }
+
+    public void setAwayTeamScore(Integer awayTeamScore) {
+        this.awayTeamScore = awayTeamScore;
+    }
 }
