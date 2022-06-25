@@ -75,4 +75,29 @@ class ScoreBoardServiceTests {
         assertNull(result.getMatch());
     }
 
+
+    @Test
+    void Update_A_Game_With_Custom_HomeTeam_AwayTeam_And_Custom_Scores() {
+        String homeTeam = "Germany";
+        String awayTeam = "France";
+        Integer homeTeamScore = 3;
+        Integer awayTeamScore = 2;
+
+        Integer oldHomeTeamScore = 2;
+        Integer oldAwayTeamScore = 2;
+
+
+        UpdateGameResult result = scoreBoardService.UpdateAGame(homeTeam, awayTeam, homeTeamScore, awayTeamScore);
+
+        assertNotNull(result);
+        assertEquals(true, result.getResult());
+        assertNotNull(result.getMatch());
+        assertThat(result.getMatch()).hasFieldOrPropertyWithValue("homeTeam", homeTeam);
+        assertThat(result.getMatch()).hasFieldOrPropertyWithValue("awayTeam", awayTeam);
+        assertThat(result.getMatch()).hasFieldOrPropertyWithValue("homeTeamScore", homeTeamScore);
+        assertThat(result.getMatch()).hasFieldOrPropertyWithValue("awayTeamScore", awayTeamScore);
+        assertThat(result).hasFieldOrPropertyWithValue("oldAwayTeamScore", oldHomeTeamScore);
+        assertThat(result).hasFieldOrPropertyWithValue("oldHomeTeamScore", oldAwayTeamScore);
+    }
+
 }
