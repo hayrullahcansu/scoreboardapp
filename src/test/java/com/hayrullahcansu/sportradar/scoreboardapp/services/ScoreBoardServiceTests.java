@@ -42,4 +42,18 @@ class ScoreBoardServiceTests {
         assertEquals(false, result.getResult());
     }
 
+    @Test
+    void Finish_A_Game_With_Custom_HomeTeam_AwayTeam() {
+        String homeTeam = "Real Madrid";
+        String awayTeam = "Barcelona";
+
+        AddingScoreResult result = scoreBoardService.StartAGame(homeTeam, awayTeam);
+
+        assertNotNull(result);
+        assertEquals(true, result.getResult());
+        assertNotNull(result.getMatch());
+        assertThat(result.getMatch()).hasFieldOrPropertyWithValue("homeTeam", homeTeam);
+        assertThat(result.getMatch()).hasFieldOrPropertyWithValue("awayTeam", awayTeam);
+    }
+
 }
