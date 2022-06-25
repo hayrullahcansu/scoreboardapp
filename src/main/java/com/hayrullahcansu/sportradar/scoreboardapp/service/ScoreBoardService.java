@@ -51,6 +51,10 @@ public class ScoreBoardService {
             var match = matches.stream()
                     .filter(p -> p.getHomeTeam() == homeTeam && p.getAwayTeam() == awayTeam)
                     .findFirst();
+            if (!match.isPresent()) {
+                result.setResult(false);
+                return result;
+            }
             matches.remove(match.get());
             result.setResult(true);
             result.setMatch(match.get());
