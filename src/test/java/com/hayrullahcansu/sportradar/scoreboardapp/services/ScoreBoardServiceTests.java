@@ -2,6 +2,7 @@ package com.hayrullahcansu.sportradar.scoreboardapp.services;
 
 import com.hayrullahcansu.sportradar.scoreboardapp.data.AddingGameResult;
 import com.hayrullahcansu.sportradar.scoreboardapp.data.FinishGameResult;
+import com.hayrullahcansu.sportradar.scoreboardapp.data.SummaryResult;
 import com.hayrullahcansu.sportradar.scoreboardapp.data.UpdateGameResult;
 import com.hayrullahcansu.sportradar.scoreboardapp.service.ScoreBoardService;
 import org.junit.jupiter.api.Test;
@@ -113,6 +114,21 @@ class ScoreBoardServiceTests {
         assertNotNull(result);
         assertEquals(false, result.getResult());
         assertNull(result.getMatch());
+    }
+
+    @Test
+    void Get_Summary_Information_Ordered_By_Time() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("1. Uruguay 6 - Italy 6\n");
+        sb.append("2. Spain 10 - Brazil 2\n");
+        sb.append("3. Mexico 0 - Canada 5\n");
+        sb.append("4. Argentina 3 - Australia 1\n");
+        sb.append("5. Germany 2 - France 2\n");
+
+
+        SummaryResult result = scoreBoardService.GetSummaryResult();
+        assertNotNull(result);
+        assertEquals(result.getSummary(), sb.toString());
     }
 
 }
