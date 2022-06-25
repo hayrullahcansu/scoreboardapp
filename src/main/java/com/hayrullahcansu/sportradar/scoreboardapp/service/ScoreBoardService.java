@@ -1,6 +1,7 @@
 package com.hayrullahcansu.sportradar.scoreboardapp.service;
 
 import com.hayrullahcansu.sportradar.scoreboardapp.data.AddingGameResult;
+import com.hayrullahcansu.sportradar.scoreboardapp.data.FinishGameResult;
 import com.hayrullahcansu.sportradar.scoreboardapp.data.Match;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,22 @@ public class ScoreBoardService {
             matches.add(m);
             result.setResult(true);
             result.setMatch(m);
+        } finally {
+            lock.unlock();
+        }
+        return result;
+    }
+
+    public FinishGameResult FinishAGame(String homeTeam, String awayTeam) {
+        lock.lock();
+        FinishGameResult result = new FinishGameResult();
+        try {
+            var match = matches.stream()
+                    .filter(p -> p.getHomeTeam() == homeTeam && p.getAwayTeam() == awayTeam)
+                    .findFirst();
+            matches.remove(match.get());
+            result.setResult(true);
+            result.setMatch(match.get());
         } finally {
             lock.unlock();
         }
