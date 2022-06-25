@@ -41,6 +41,7 @@ class ScoreBoardServiceTests {
 
         assertNotNull(result);
         assertEquals(false, result.getResult());
+        assertNull(result.getMatch());
     }
 
     @Test
@@ -59,6 +60,19 @@ class ScoreBoardServiceTests {
         assertThat(result.getMatch()).hasFieldOrPropertyWithValue("awayTeam", awayTeam);
         assertThat(result.getMatch()).hasFieldOrPropertyWithValue("homeTeamScore", homeTeamScore);
         assertThat(result.getMatch()).hasFieldOrPropertyWithValue("awayTeamScore", awayTeamScore);
+    }
+
+
+    @Test
+    void Finish_A_Game_Return_Fail_If_The_Match_Not_Exists() {
+        String homeTeam = "Argentina";
+        String awayTeam = "Turkey";
+
+        FinishGameResult result = scoreBoardService.FinishAGame(homeTeam, awayTeam);
+
+        assertNotNull(result);
+        assertEquals(false, result.getResult());
+        assertNull(result.getMatch());
     }
 
 }
