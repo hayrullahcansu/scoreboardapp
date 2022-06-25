@@ -13,6 +13,13 @@ public class Match {
         this.awayTeamScore = 0;
     }
 
+    public Match(String homeTeam, String awayTeam, Integer homeTeamScore, Integer awayTeamScore) {
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+        this.homeTeamScore = homeTeamScore;
+        this.awayTeamScore = awayTeamScore;
+    }
+
     public String getHomeTeam() {
         return homeTeam;
     }
