@@ -1,22 +1,16 @@
 package com.hayrullahcansu.sportradar.scoreboardapp.data;
 
 public class Match {
-    Integer id;
     String homeTeam;
     String awayTeam;
+    Integer homeTeamScore;
+    Integer awayTeamScore;
 
-    public Match(Integer id, String homeTeam, String awayTeam) {
-        this.id = id;
+    public Match(String homeTeam, String awayTeam) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+        this.homeTeamScore = 0;
+        this.awayTeamScore = 0;
     }
 
     public String getHomeTeam() {

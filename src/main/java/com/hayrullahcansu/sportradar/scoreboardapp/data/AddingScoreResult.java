@@ -4,10 +4,15 @@ public class AddingScoreResult {
     Boolean result;
     Match match;
 
+    public AddingScoreResult() {
+    }
+
     public AddingScoreResult(Boolean result, Match match) {
         this.result = result;
         this.match = match;
     }
+
+
 
     public Boolean getResult() {
         return result;
