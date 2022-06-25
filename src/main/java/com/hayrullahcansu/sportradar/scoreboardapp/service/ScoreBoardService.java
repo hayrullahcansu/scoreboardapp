@@ -1,6 +1,6 @@
 package com.hayrullahcansu.sportradar.scoreboardapp.service;
 
-import com.hayrullahcansu.sportradar.scoreboardapp.data.AddingScoreResult;
+import com.hayrullahcansu.sportradar.scoreboardapp.data.AddingGameResult;
 import com.hayrullahcansu.sportradar.scoreboardapp.data.Match;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +23,9 @@ public class ScoreBoardService {
     );
     ReentrantLock lock = new ReentrantLock();
 
-    public AddingScoreResult StartAGame(String homeTeam, String awayTeam) {
+    public AddingGameResult StartAGame(String homeTeam, String awayTeam) {
         lock.lock();
-        AddingScoreResult result = new AddingScoreResult();
+        AddingGameResult result = new AddingGameResult();
         try {
             var isMatchExists = matches.stream()
                     .anyMatch(p -> p.getHomeTeam() == homeTeam && p.getAwayTeam() == awayTeam);

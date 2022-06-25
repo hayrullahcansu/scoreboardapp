@@ -1,6 +1,6 @@
 package com.hayrullahcansu.sportradar.scoreboardapp.services;
 
-import com.hayrullahcansu.sportradar.scoreboardapp.data.AddingScoreResult;
+import com.hayrullahcansu.sportradar.scoreboardapp.data.AddingGameResult;
 import com.hayrullahcansu.sportradar.scoreboardapp.service.ScoreBoardService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -22,7 +22,7 @@ class ScoreBoardServiceTests {
         String homeTeam = "Real Madrid";
         String awayTeam = "Barcelona";
 
-        AddingScoreResult result = scoreBoardService.StartAGame(homeTeam, awayTeam);
+        AddingGameResult result = scoreBoardService.StartAGame(homeTeam, awayTeam);
 
         assertNotNull(result);
         assertEquals(true, result.getResult());
@@ -36,7 +36,7 @@ class ScoreBoardServiceTests {
         String homeTeam = "Uruguay";
         String awayTeam = "Italy";
 
-        AddingScoreResult result = scoreBoardService.StartAGame(homeTeam, awayTeam);
+        AddingGameResult result = scoreBoardService.StartAGame(homeTeam, awayTeam);
 
         assertNotNull(result);
         assertEquals(false, result.getResult());
@@ -44,10 +44,10 @@ class ScoreBoardServiceTests {
 
     @Test
     void Finish_A_Game_With_Custom_HomeTeam_AwayTeam() {
-        String homeTeam = "Real Madrid";
-        String awayTeam = "Barcelona";
+        String homeTeam = "Mexico";
+        String awayTeam = "Canada";
 
-        AddingScoreResult result = scoreBoardService.StartAGame(homeTeam, awayTeam);
+        AddingGameResult result = scoreBoardService.StartAGame(homeTeam, awayTeam);
 
         assertNotNull(result);
         assertEquals(true, result.getResult());

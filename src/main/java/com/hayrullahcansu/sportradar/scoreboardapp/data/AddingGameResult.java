@@ -1,11 +1,11 @@
 package com.hayrullahcansu.sportradar.scoreboardapp.data;
 
 
-public class AddingScoreResult {
+public class AddingGameResult {
     Boolean result;
     Match match;
 
-    public AddingScoreResult() {
+    public AddingGameResult() {
     }
     
     public Boolean getResult() {
