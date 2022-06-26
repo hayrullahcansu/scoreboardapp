@@ -1,16 +1,17 @@
-# Wallet Management
+# Football World Cup Score Board
 
 ## Table of Contents
 
-- [Wallet Management](#wallet-management)
+- [Football World Cup Score Board](#football-world-cup-score-board)
     - [Table of Contents](#table-of-contents)
     - [Description](#description)
     - [Features](#features)
     - [Structure](#structure)
     - [Testing](#testing)
         - [Step 1: Go to api folder of project](#step-1-go-to-api-folder-of-project)
-        - [Step 2: Run on Docker](#step-2-run-on-docker)
+        - [Step 2: Run Tests via Maven](#step-2-run-tests-via-maven)
         - [Step 3: Test Output](#step-3-test-output)
+        - [Step 3: Test Coverage](#step-3-test-coverage)
     - [Run on Local](#run-on-local)
         - [Step 1: Go to root folder of project](#step-1-go-to-root-folder-of-project)
         - [Step 2: Run via Maven](#step-2-run-via-maven)
@@ -21,11 +22,11 @@
 ## Description
 
 Football World Cup Score Board is developed for Sportradar company.
+
 * Start A Game
 * Finish A Game
 * Update A Game
 * Get Summary
-
 
 ## Features
 
@@ -96,8 +97,8 @@ Running `/Users/hayrullahcansu/Workspace/java/scoreboardapp/mvnw`...
 ```
 
 ### Step 3: Test Coverage
-![test coverage](https://raw.githubusercontent.com/hayrullahcansu/scoreboardapp/master/test%20coverage.png)
 
+![test coverage](https://raw.githubusercontent.com/hayrullahcansu/scoreboardapp/master/test%20coverage.png)
 
 ## Run on Local
 
