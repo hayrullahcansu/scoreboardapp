@@ -96,7 +96,7 @@ Running `/Users/hayrullahcansu/Workspace/java/scoreboardapp/mvnw`...
 ```
 
 ### Step 3: Test Coverage
-![test coverage](test coverage.png)
+![test coverage](https://raw.githubusercontent.com/hayrullahcansu/scoreboardapp/master/test%20coverage.png)
 
 
 ## Run on Local
